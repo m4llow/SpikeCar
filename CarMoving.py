@@ -4,7 +4,8 @@ from spike.control import wait_for_seconds
 hub = PrimeHub()
 
 motor_pair = MotorPair('A', 'B')
-motor_pair.set_default_speed(50)
+motor_pair.set_default_speed(-50)
+motor_pair.start()
 
 distance_sensor = DistanceSensor('C')
 color_sensor_d = ColorSensor('D')
@@ -23,6 +24,7 @@ try:
 
         if color_d == 'red' or color_e == 'red':
             print("Color detected: red")
+            motor_pair.stop()
 
         motor_pair.start()
 
